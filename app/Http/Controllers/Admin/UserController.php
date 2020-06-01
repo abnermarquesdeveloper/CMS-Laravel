@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -39,7 +40,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'name',
+            'email',
+            'password',
+            'password_confirmation'
+        ]);
+
+        $validator = $this->validator($data);
+
+        if($validator->fails()){
+            return redirect()->route('users.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $user = User::create($data);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -85,5 +102,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validator(array $data){
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed']
+        ]);
     }
 }
