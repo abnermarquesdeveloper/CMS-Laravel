@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
+        $users = User::paginate(8); //Para adicionar paginação com o Laravel. Deve usar a função links() na view.
         return view('admin.users.index', [
             'users'=> $users
         ]);
