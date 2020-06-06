@@ -155,7 +155,8 @@ class PageController extends Controller
         $page = Page::find($id);
         $page->delete();
 
-        return redirect()->route('pages.index');
+        return redirect()->route('pages.index')
+                ->with('warning', ''.strtoupper($page->title).'" foi apagada!!');
     }
 
     protected function validatorCreate($data){
