@@ -33,14 +33,31 @@ class HomeController extends Controller
         //Contagem de páginas
         $pageCount = Page::count();
 
+
         //Contagem de usuários
         $userCount = User::count();
+
+        //Fazendo a contagem e pegando os dados e gerando um "Json_Encode" para preencher o gráfico "pie (pizza)" na view
+        $pagepie = [];
+        $visitsAll = Visitor::selectRaw('page, count(page) as c')->groupBy('page')->get();
+       
+        foreach($visitsAll as $visit){
+            $pagepie[$visit['page']] = intval($visit['c']);
+        }
+
+        //Gera um array Json com apenas as Chaves de $pagepie
+        $pageLabels = json_encode(array_keys($pagepie));
+
+        //Gera um array Json com apenas os valores de $pagepie
+        $pagesValues = json_encode(array_values($pagepie));
         
         return view ('admin.home', [
             'visitsCount' => $visitsCount,
             'onlineCount' => $onlineCount,
             'pageCount'   => $pageCount,
-            'userCount'   => $userCount
+            'userCount'   => $userCount,
+            'pageLabels'  => $pageLabels,
+            'pageValues'  => $pagesValues
         ]);
     }
 }
