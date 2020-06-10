@@ -6,7 +6,22 @@
 
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="col-md-6">
+            <form method="GET">
+                <select onChange="this.form.submit()" name="interval" class="float-md-right">
+                    <option {{$dateInterval === 7 ? 'selected="selected"' : ''}} value="7">Últimos 7 dias</option>
+                    <option {{$dateInterval === 15 ? 'selected="selected"' : ''}} value="15">Últimos 15 dias</option>
+                    <option {{$dateInterval === 30 ? 'selected="selected"' : ''}} value="30">Últimos 30 dias</option>
+                    <option {{$dateInterval === 60 ? 'selected="selected"' : ''}} value="60">Últimos 2 meses</option>
+                    <option {{$dateInterval === 90 ? 'selected="selected"' : ''}} value="90">Últimos 3 meses</option>
+                </select>
+            </form>
+        </div>
+    </>
 @endsection
 
 @section('content')
