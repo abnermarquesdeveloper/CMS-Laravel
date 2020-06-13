@@ -71,7 +71,7 @@
 
     <!-- footer start -->
     <footer class="footer">
-        <div class="footer_top">
+        <div class="footer_top" style="background-color: {{$front_config['bgcolor']}}";>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-lg-4">
@@ -81,9 +81,8 @@
                                     <img src="{{asset('assets/img/logo.png')}}" alt="">
                                 </a>
                             </div>
-                            <p>
-                                Firmament morning sixth subdue darkness
-                                creeping gathered divide.
+                            <p style="color: {{$front_config['textcolor']}}";>
+                                {{$front_config['subtitle']}}
                             </p>
                             <div class="socail_links">
                                 <ul>

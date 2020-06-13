@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Site\HomeController@index');
 
-
 Route::prefix('painel')->group(function(){
     Route::get('/', 'Admin\HomeController@index')->name('admin');
 
@@ -36,3 +35,5 @@ Route::prefix('painel')->group(function(){
     Route::get('settings', 'Admin\SettingController@index')->name('settings');
     Route::put('settingssave', 'Admin\SettingController@save')->name('settings.save');
 });
+
+Route::fallback('Site\PageController@index');
