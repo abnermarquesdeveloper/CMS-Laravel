@@ -12,8 +12,8 @@
                             <div class="slider_text ">
                                 <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >{{$front_config['title']}}</h3>
                                 <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">{{$front_config['subtitle']}}</p>
-                                <div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                                    <a href="#" class="boxed-btn3">Get Start Now</a>
+                                <div class="video_service_btn wow fadeInRight" data-wow-duration="1s" data-wow-delay=".1s">
+                                    <a href="/painel" class="boxed-btn3">Admin Painel</a>
                                 </div>
                             </div>
                         </div>

@@ -19,7 +19,7 @@
     <!-- /bradcam_area  -->
 
     <div class="container my-4">
-        {!! $page['body'] !!} <!--Colocar a "exclamação para não dar "scap" e usar o html de fato!"-->
+        {!! $page['body'] !!} <!--Colocar a "exclamação para não dar "scrap" e usar o html de fato!"-->
     </div>
         
 @endsection
